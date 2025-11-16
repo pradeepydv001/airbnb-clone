@@ -1,0 +1,71 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row">
+    <div class="col-8 offset-2">
+<body>
+    <h1>Edit Listings</h1>
+    <form method="POST" action="/listings/<%=listen._id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+        <div>
+            <lable for="title" class="form-lable">Title</lable>
+            <input name="listing[title]" value="<%=listen.title%>" type="text" class="form-control" required>
+            <div class="valid-feedback">
+                Look's Good</div>
+        </div>
+        <br>
+        <div>
+            <lable for="description" class="form-lable">Description</lable>
+            <textarea name="listing[description]" class="form-control" required> <%=listen.description%> </textarea>
+            <div class="invalid-feedback">
+                please provide valid-description</div>
+        </div>
+        <br>
+        <div class="mb-3">
+            Orginal listings image:<br>
+            <img src="<%=originalImageUrl%>" alt="Listing Image" >
+        </div>
+         <div>
+            <lable for="image" class="form-lable">New Image Upload</lable>
+            <input name="listing[image]" type="file" value="<%=listen.image.url%>" class="form-control">
+        </div>
+        <br>
+        <div>
+            <label for="category" class="form-label">Category</label>
+            <select name="listing[category]" class="form-control" required>
+                <option value="Trending" <%= listen.category === "Trending" ? "selected" : "" %>>Trending</option>
+                <option value="Rooms" <%= listen.category === "Rooms" ? "selected" : "" %>>Rooms</option>
+                <option value="Amazing View" <%= listen.category === "Amazing View" ? "selected" : "" %>>Amazing View</option>
+                <option value="City" <%= listen.category === "City" ? "selected" : "" %>>City</option>
+                <option value="Beach" <%= listen.category === "Beach" ? "selected" : "" %>>Beach</option>
+                <option value="Mountain" <%= listen.category === "Mountain" ? "selected" : "" %>>Mountain</option>
+                <option value="Snow" <%= listen.category === "Snow" ? "selected" : "" %>>Snow</option>
+                <option value="Farm" <%= listen.category === "Farm" ? "selected" : "" %>>Farm</option>
+            </select>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <lable for="price" class="form-lable" >Price</lable>
+                <input name="listing[price]"type="text"  value="<%=listen.price%>" class="form-control" required>
+                <div class="invalid-feedback">
+                    please provide valid-price</div>
+            </div>
+            <br>
+            <div class="col-md-8">
+                <lable for="location" class="form-lable"  >Location</lable>
+                <input name="listing[location]"type="text" value="<%=listen.location%>" class="form-control" required>
+                <div class="invalid-feedback">
+                    please provide valid-location</div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <lable for="country" class="form-lable">Country</lable>
+            <input name="listing[country]" value="<%=listen.country%>"  type="text" class="form-control">
+            <div class="invalid-feedback">
+                please provide valid-country</div>  
+        </div><br>
+        <button class="btn btn-dark edit-btn">Edit</button>
+        <br><br>
+    </form>
+</body>
+</div>
+</div>
